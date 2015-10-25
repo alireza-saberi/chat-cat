@@ -4,7 +4,23 @@ var express = require('express'),
 	cookieParser = require('cookie-parser'),
 	session = require('express-session'),
 	config = require('./config/config.js'),
-	connectMongo = require('connect-mongo')(session);
+	mongojs = require('mongojs'),
+	db = mongojs('chatCAT', ['chatCAT']);
+
+	// var userSchema = mongoose.Schema({
+	// 	username:String,
+	// 	password: String,
+	// 	fullname: String
+	// });
+	// var Person = mongoose.model('user', userSchema);
+	// var Ali = new Person({ 		
+	// 	username:"Ali",
+	// 	password: "123",
+	// 	fullname: "Alireza Saberi" });
+	// Ali.save(function(error){
+	// 	console.log("done");
+	// });
+
 
 // set the view emgine to ejs
 app.set('view engine', 'ejs');
