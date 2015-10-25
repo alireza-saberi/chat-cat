@@ -5,8 +5,13 @@ var express = require('express'),
 	session = require('express-session'),
 	config = require('./config/config.js'),
 	mongojs = require('mongojs'),
-	db = mongojs('chatCAT', ['chatCAT']);
+	db = mongojs('chatCAT', ['chatCAT']),
+	passport = require('passport'),
+	FacebookStrategy = require('passport-facebook').Strategy;
+	require('./auth/passportAuth.js')(passport, FacebookStrategy, config, db, mongojs);
 
+	app.use(passport.initialize());
+	app.use(passport.session());
 	// var userSchema = mongoose.Schema({
 	// 	username:String,
 	// 	password: String,
@@ -43,7 +48,7 @@ var env = process.env.NODE_ENV || 'development';
 		}));
 	}
 
-require('./routes/route.js')(express, app);
+require('./routes/route.js')(express, app, passport);
 
 app.listen(3000, function(){
 	console.log('chatCAT is running on port 3000. Press ctrl+C to exit');

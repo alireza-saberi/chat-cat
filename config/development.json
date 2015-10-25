@@ -1,5 +1,10 @@
 {
 	"dbURL":"chatCAT",
-	"sessionSecret":"AliBabaBaghiDarehLaLaLa"
+	"sessionSecret":"AliBabaBaghiDarehLaLaLa",
+	"fb":{
+		"appID" : "1680277778850554",
+		"appSecret": "fac69349f77ef9d2bdedbef6c0667873",
+		"callbackURL":"http://localhost:3000/auth/facebook/callback"
+	}
 
 }
