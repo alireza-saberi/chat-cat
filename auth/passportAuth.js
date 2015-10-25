@@ -1,24 +1,24 @@
 module.exports = function(passport, FacebookStrategy, config, db, mongojs){
 
 	var User = mongojs('chatUsers', ['chatUsers']);
-	// passport.serializeUser(function(user, done){
-	// 	done(null, user.id);
+	passport.serializeUser(function(user, done){
+		done(null, user.id);
+	});
+
+	passport.deserializeUser(function(id, done){
+		User.chatUsers.find({'profileID': profile.id}, function(error, user){
+			done(error, user);
+		});
+	});
+
+
+	// passport.serializeUser(function(user, done) {
+	//   done(null, user);
 	// });
 
-	// passport.deserializeUser(function(id, done){
-	// 	User.chatUsers.find({'profileID': profile.id}, function(error, user){
-	// 		done(error, user);
-	// 	});
+	// passport.deserializeUser(function(user, done) {
+	//   done(null, user);
 	// });
-
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
 
 	
 
